@@ -1,4 +1,5 @@
 import SimpleForm from './pages/SimpleForm'
+import ReactHookForm from './pages/ReactHookForm'
 import './App.css'
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <SimpleForm />
+      <ReactHookForm />
     </>
   )
 }
