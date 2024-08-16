@@ -1,24 +1,25 @@
+import { NavLink } from 'react-router-dom'
 import './header.scss'
 
 const Header = () => {
   return (
     <nav className='header'>
-        <a href='/' className='header__logo'>LOGO</a>
+        <NavLink to='/' className='header__logo'>LOGO</NavLink>
         <ul className='header__nav-list'>
             <li className='header__list-item'>
-                <a href="/" className='header__item-link header__item-link--is-active'>Home</a>
+                <NavLink to="/" className='header__item-link header__item-link--is-active'>Home</NavLink>
             </li>
             <li className='header__list-item'>
-                <a href="/dashboard" className='header__item-link'>Dashboard</a>
+                <NavLink to="/dashboard" className='header__item-link'>Dashboard</NavLink>
             </li>
             <li className='header__list-item'>
-                <a href="/secret" className='header__item-link'>Secret</a>
+                <NavLink to="/secret" className='header__item-link'>Secret</NavLink>
             </li>
             <li className='header__list-item'>
-                <a href="/login" className='header__item-link'>Login</a>
+                <NavLink to="/login" className='header__item-link'>Login</NavLink>
             </li>
             <li className='header__list-item'>
-                <a href="/signup" className='header__item-link'>Signup</a>
+                <NavLink to="/signup" className='header__item-link'>Signup</NavLink>
             </li>
         </ul>
     </nav>
