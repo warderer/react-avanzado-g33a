@@ -58,6 +58,7 @@ const Signup = () => {
         />
         <label htmlFor='last_name'>Last Name</label>
       </div>
+      {errors.last_name && <span>This field is required</span>}
 
       <div className='form-floating'>
         <select
@@ -72,6 +73,7 @@ const Signup = () => {
         </select>
         <label htmlFor='gender'>Gender</label>
       </div>
+      {errors.gender && <span>This field is required</span>}
 
       <div className='form-floating'>
         <input
