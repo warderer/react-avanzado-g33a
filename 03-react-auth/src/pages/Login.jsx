@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form'
+import { loginUserService } from '../services/userServices'
+import { useNavigate } from 'react-router-dom'
 import logo from '../assets/react.svg'
 import '../styles/form.css'
 
 const Login = () => {
+  const navigate = useNavigate()
 
   const {
     register,
@@ -12,7 +15,17 @@ const Login = () => {
   } = useForm()
 
   const onSubmit = async (data) => {
-    console.log(data)
+    try {
+      const response = await loginUserService(data)
+      if(response.status === 200) {
+        // Guardamos el token en el localStorage del navegador.
+        // Este dato permanece aún si el navegador se cierra y se vuelve a abrir.
+        localStorage.setItem('token', response.data.token)
+        navigate('/dashboard')
+      }
+    } catch (error) {
+      console.error('Ocurrio un error al iniciar sesión', error.message)
+    }
   }
 
   return (
