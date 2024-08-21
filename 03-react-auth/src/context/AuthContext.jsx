@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
 
 // #1 Crear el contexto
@@ -23,8 +23,22 @@ const AuthProvider = ({ children }) => {
         setUserPayload(null)
     }
 
+    // Verificar si hay un token en el localStorage, y si es valido, cargarlo en el estado, para evitar que el usuario tenga que iniciar sesión cada vez que entre a la página.
+    useEffect(()=>{
+        const token = localStorage.getItem('token')
+        if(token){
+            const payload = jwtDecode(token)
+            setIsAuth(true)
+            setUserPayload(payload)
+        }
+    },[])
+
     const data = {
     // Las cosas que queremos compartir
+        isAuth,
+        userPayload,
+        login,
+        logout
     }
     return(
         <AuthContext.Provider value={data}>
