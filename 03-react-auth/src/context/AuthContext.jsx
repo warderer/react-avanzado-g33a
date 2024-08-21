@@ -7,12 +7,13 @@ const AuthContext = createContext()
 // #2 Crear la función que proveerá el contexto (provider)
 const AuthProvider = ({ children }) => {
 // Acá va mi lógica del proveedor
+    // const [token, setToken] = useState(null) // JWT token
     const [isAuth, setIsAuth] = useState(false) // ¿Estoy autenticado?
     const [userPayload, setUserPayload] = useState(null) // ¿Quién soy?: JWT payload
 
     const login = (jwtToken) => {
         localStorage.setItem('token', jwtToken)
-        const payload = jwtDecode(token)
+        const payload = jwtDecode(jwtToken)
         setIsAuth(true)
         setUserPayload(payload)
     }
