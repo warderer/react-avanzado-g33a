@@ -21,9 +21,36 @@ describe('Tests de Login', () => {
         cy.visit('/login');
 
         // Act
+        /*
         cy.get('input[type="email"]').type('drstrange@marvel.com');
         cy.get('input[type="password"]').type('multiverso');
         cy.get('button').click();
+        */
+        cy.login('drstrange@marvel.com', 'multiverso');
+
+        cy.wait('@loginRequest'); // Esperar a que la petición se realice.
+
+        // Assert
+        cy.get('h1').contains('Dashboard');
+
+    });
+
+    
+    it('Iniciar sesión como ADMIN', () => {
+
+        // Intercep -> Esperar a que una acción se realice.
+        cy.intercept('POST', 'https://ecommerce-json-jwt.onrender.com/login').as('loginRequest');
+
+        // Arrange
+        cy.visit('/login');
+
+        // Act
+        /*
+        cy.get('input[type="email"]').type('superman@dc.com');
+        cy.get('input[type="password"]').type('superman');
+        cy.get('button').click();
+        */
+       cy.login('superman@dc.com', 'superman');
 
         cy.wait('@loginRequest'); // Esperar a que la petición se realice.
 
