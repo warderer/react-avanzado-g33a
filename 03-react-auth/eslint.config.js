@@ -37,7 +37,8 @@ export default [
     },
     extends: [
       'standard',
-      'standard-jsx'
+      'standard-jsx',
+      'plugin:cypress/recommended'
     ],
   },
 ]
